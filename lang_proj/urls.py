@@ -19,7 +19,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('terms-list', views.terms_list),
+    path('courses', views.show_all_courses),
+    path('courses/<slug:course_id>/', views.show_course),
     path('add-term', views.add_term),
     path('send-term', views.send_term),
     path('stats', views.show_stats)

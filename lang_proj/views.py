@@ -1,15 +1,28 @@
 from django.shortcuts import render
 from django.core.cache import cache
 from . import terms_work
-
+from lang_proj.models import Courses, Terms
 
 def index(request):
     return render(request, "index.html")
 
 
-def terms_list(request):
-    terms = terms_work.get_terms_for_table()
-    return render(request, "term_list.html", context={"terms": terms})
+def show_all_courses(request):
+    # courses = terms_work.get_terms_for_table()
+    courses = []
+    for course in Courses.objects.all():
+        terms_num = len(Terms.objects.filter(course_id=course.id))
+        courses.append([str(course.id), str(course.name), terms_num])
+    return render(request, "all_courses.html", context={"courses": courses})
+
+
+def show_course(request, course_id):
+    course = Courses.objects.get(id=course_id)
+    terms = Terms.objects.filter(course_id=course_id)
+    terms_list = []
+    for t in terms:
+        terms_list.append([t.id, t.word, t.translation])
+    return render(request, "course.html", context={"name": course.name, "comment": course.comment, "terms": terms_list})
 
 
 def add_term(request):
