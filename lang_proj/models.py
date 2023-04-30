@@ -11,7 +11,7 @@ from django.db import models
 class Courses(models.Model):
     id = models.AutoField(primary_key=True, db_column='course_id')
     name = models.CharField(blank=True, null=True, max_length=100)
-    comment = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True, db_column='comment')
 
     class Meta:
         managed = False

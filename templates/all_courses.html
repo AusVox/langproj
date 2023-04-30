@@ -21,12 +21,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for id, name, num in courses %}
+            {% for num, id, name, terms_num in courses %}
             <tr>
 
-                <td class="py-3">{{ id }}</td>
-                <td class="py-3"><a href="/courses/{{id}}">{{ name }}</a></td>
                 <td class="py-3">{{ num }}</td>
+                <td class="py-3"><a href="/courses/{{id}}">{{ name }}</a></td>
+                <td class="py-3">{{ terms_num }}</td>
             </tr>
             {% endfor %}
           </tbody>

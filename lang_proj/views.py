@@ -1,56 +1,62 @@
 from django.shortcuts import render
 from django.core.cache import cache
 from . import terms_work
+from lang_proj.views_functions import *
 from lang_proj.models import Courses, Terms
+from django.shortcuts import redirect
+
 
 def index(request):
     return render(request, "index.html")
 
 
 def show_all_courses(request):
-    # courses = terms_work.get_terms_for_table()
-    courses = []
-    for course in Courses.objects.all():
-        terms_num = len(Terms.objects.filter(course_id=course.id))
-        courses.append([str(course.id), str(course.name), terms_num])
+    courses = get_all_courses()
     return render(request, "all_courses.html", context={"courses": courses})
 
 
 def show_course(request, course_id):
     course = Courses.objects.get(id=course_id)
+    terms = get_terms_by_id(course_id)
+    context = {
+        "id": course.id,
+        "name": course.name,
+        "description": course.description,
+        "terms": terms
+    }
+    return render(request, "course.html", context=context)
+
+
+def delete_course(request, course_id):
     terms = Terms.objects.filter(course_id=course_id)
-    terms_list = []
     for t in terms:
-        terms_list.append([t.id, t.word, t.translation])
-    return render(request, "course.html", context={"name": course.name, "comment": course.comment, "terms": terms_list})
+        t.delete()
+    Courses.objects.get(id=course_id).delete()
+    return redirect('/courses')
+
+def add_course(request):
+    return render(request, "course_add.html")
 
 
-def add_term(request):
-    return render(request, "term_add.html")
-
-
-def send_term(request):
+def create_course(request):
     if request.method == "POST":
         cache.clear()
-        user_name = request.POST.get("name")
-        new_term = request.POST.get("new_term", "")
-        new_definition = request.POST.get("new_definition", "").replace(";", ",")
-        context = {"user": user_name}
-        if len(new_definition) == 0:
+        course_name = request.POST.get("course_name")
+        description = request.POST.get("description", "")
+        terms = request.POST.get("terms", "")
+        context = {"name": course_name}
+        if len(terms) == 0:
             context["success"] = False
-            context["comment"] = "Описание должно быть не пустым"
-        elif len(new_term) == 0:
-            context["success"] = False
-            context["comment"] = "Термин должен быть не пустым"
+            context["comment"] = "Список слов должен быть не пустым"
         else:
             context["success"] = True
             context["comment"] = "Ваш термин принят"
-            terms_work.write_term(new_term, new_definition)
+            write_course(course_name, description, terms)
         if context["success"]:
             context["success-title"] = ""
-        return render(request, "term_request.html", context)
+        return render(request, "course_request.html", context)
     else:
-        add_term(request)
+        add_course(request)
 
 
 def show_stats(request):

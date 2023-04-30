@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block page-lead %}
-{{ comment }}<br>
+{{ description }}<br>
 <a href="/courses" class="btn btn-primary">Назад</a>
+<a href="/courses/{{id}}/delete" class="btn btn-primary">Удалить</a>
 {% endblock %}
 
 {% block content %}

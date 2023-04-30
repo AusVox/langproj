@@ -1,0 +1,45 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Добавить новый курс
+{% endblock %}
+
+{% block page-lead %}
+<a href="/" class="btn btn-primary">Назад</a>
+{% endblock %}
+
+
+{% block content %}
+<div class="container-sm px-5 py-5" id="term-form">
+    <form method="post">
+        <div class="row px-5 py-2">
+            <h3>Название курса:</h3>
+        </div>
+        <div class="row px-5 py-2">
+            <div class="col-md-4">
+                <label for="course_name">Название курса</label>
+                <input type="text" class="form-control input-lg" name="course_name" id="course_name">
+            </div>
+            <div class="col-md-8">
+                <label for="description">Описание</label>
+                <textarea type="text" class="form-control input-lg" name="description" id="description" aria-describedby="description_field" rows="3"></textarea>
+                <div id="description_field" class="form-text">Постарайтесь уложиться в одно, максимум два предложения</div>
+            </div>
+        </div>
+        <div class="row px-5 py-2">
+            <div class="col-md-8">
+                <label for="terms">Термины</label>
+                <textarea type="text" class="form-control input-lg" name="terms" id="terms" aria-describedby="terms_field" rows="6"></textarea>
+                <div id="terms_field" class="form-text">
+                    Формат:<br>
+                    Term 1 - Перевод,<br>
+                    Term 2 - Перевод
+                </div>
+            </div>
+        </div>
+        <div class="row px-5 py-2">
+            <button type="submit" class="btn btn-primary" formaction="/create-course">Отправить</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
