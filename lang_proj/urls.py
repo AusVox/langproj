@@ -24,5 +24,7 @@ urlpatterns = [
     path('courses/<int:course_id>/delete', views.delete_course),
     path('add-course', views.add_course),
     path('create-course', views.create_course),
+    path('quiz', views.start_quiz),
+    path('check-quiz', views.check_quiz),
     path('stats', views.show_stats)
 ]

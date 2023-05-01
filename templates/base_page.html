@@ -7,21 +7,91 @@
     {% load static %}
     <!-- CSS -->
     <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+    <style type="text/css">
+        .btn-primary {
+        background-color: #bc6c25;
+        border-color: #bc6c25;
+        }
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        background-color: #dda15e;
+        border-color: #dda15e;
+        }
+        .btn-outline-primary {
+        border-color: #bc6c25;
+        color: #bc6c25;
+        }
+        .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+        background-color: #dda15e;
+        border-color: #dda15e;
+        }
+        body {
+        color: #26221e;
+        background: #717171;
+        }
+        .navbar {
+        background-color: #e8e6e3;
+        }
+        .navbar .navbar-brand {
+        color: #26221e;
+        }
+    </style>
 </head>
 <body>
 <main>
-    <div class="container">
-        <header class="border-bottom">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <div class="fs-2 mb-3">
-                    <img src="{% static 'calculator.svg' %}" alt="Проект про математику" width="32" height="32"/>
-                    <span>Проект про математику</span>
+    <nav class="navbar fixed-top navbar-expand-lg">
+                <a class="navbar-brand" href="/">
+                    <div style="align-items: center; margin-left: 10px;">
+                        <span style=" display: inline-block; background: #bc6c25; border-radius: 6px;">
+                            <span style="
+                            color: white;
+                            font-family: serif;
+                            font-size: 32px;
+                            font-weight: bold">
+                                &nbsp;ENG&nbsp;
+                            </span>
+                        </span>
+                            лишский
+                    </div>
+                </a>
+                <button class="navbar-toggler"
+                        type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/courses">Список курсов</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/add-course">Добавить курс</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/quiz">Пройти тест</a>
+                        </li>
+                    </ul>
+
+                    <form class="form-inline my-2 my-lg-0" style="display: flex; margin-left: auto; margin-right: 0;">
+                        <input class="form-control mr-sm-2"
+                               type="search"
+                               placeholder="Поиск"
+                               aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0"
+                                type="submit"
+                                formaction="/search">
+                            Поиск
+                        </button>
+                    </form>
                 </div>
-            </a>
-        </header>
-        <div class="p-5 mb-4 bg-light rounded-3" id="title-box">
+        </nav>
+    <div class="container" style="background: #e8e6e3;">
+        <div class="p-5 mb-4 rounded-3" id="title-box">
             <div class="container-fluid py-5">
-                <h1 class="display-1 fw-bold">{% block page-title %}{% endblock %}</h1>
+                <h1 class="display-1 fw-bold" style="color: #bc6c25;">{% block page-title %}{% endblock %}</h1>
                 <p class="col-md-8 fs-4">{% block page-lead %}{% endblock %}</p>
             </div>
         </div>

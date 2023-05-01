@@ -1,59 +1,25 @@
 {% extends "base_page.html" %}
 
 {% block page-title %}
+<div style="margin: auto; text-align: center;">
 ENGлишский
+</div>
 {% endblock %}
 
 {% block page-lead %}
-Это страничка проекта про изучение английского языка.
+<div style="margin: auto; text-align: center;">
+    Это страничка проекта про изучение английского языка.
+</div>
 {% endblock %}
 
 {% block content %}
+<div style="margin: auto; text-align: center;">
+    <a href="/quiz" class="btn btn-primary">
+        <h3 class="fs-2">Проверь себя</h3>
+    </a>
+    <p>Как хорошо ты знаешь английский?</p>
+</div>
 <div class="container px-4 py-5" id="project-contents">
-    <h2 class="pb-2 border-bottom">Меню</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        <div class="col d-flex">
-            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-            </div>
-            <div>
-                <h3 class="fs-2">Список курсов</h3>
-                <p>Простая страница с контентом, который разложен в таблицу. Содержимое таблицы находится в БД.</p>
-                <a href="/courses" class="btn btn-primary">Посмотреть</a>
-            </div>
-        </div>
-        <div class="col d-flex">
-            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-            </div>
-            <div>
-                <h3 class="fs-2">Форма для заполнения термина</h3>
-                <p>Пример POST-запроса, который отправится после того, как вы заполните форму. Он допишет термин в ваш
-                    текстовый файл, и если всё будет успешно — вас перенаправят на страницу терминов</p>
-                <a href="/add-course" class="btn btn-primary">
-                    Заполнить
-                </a>
-            </div>
-        </div>
-        <div class="col d-flex">
-            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                <svg class="bi" width="1em" height="1em">
-                    <use xlink:href="#cpu-fill"></use>
-                </svg>
-            </div>
-            <div>
-                <h3 class="fs-2">Статистика</h3>
-                <p>Сколько терминов уже есть? Какой они длины?</p>
-                <a href="/stats" class="btn btn-primary">
-                    Изучить
-                </a>
-            </div>
-        </div>
-    </div>
     <h2 class="pb-2 border-bottom">Что можете сделать вы?</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
         <div class="col-lg-4">
