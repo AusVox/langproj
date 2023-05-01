@@ -75,11 +75,12 @@
                         </li>
                     </ul>
 
-                    <form class="form-inline my-2 my-lg-0" style="display: flex; margin-left: auto; margin-right: 0;">
+                    <form method="post" class="form-inline my-2 my-lg-0" style="display: flex; margin-left: auto; margin-right: 0;">
                         <input class="form-control mr-sm-2"
                                type="search"
                                placeholder="Поиск"
-                               aria-label="Search">
+                               aria-label="Search"
+                               name="search">
                         <button class="btn btn-outline-primary my-2 my-sm-0"
                                 type="submit"
                                 formaction="/search">
@@ -96,7 +97,10 @@
             </div>
         </div>
         {% block content %}{% endblock %}
-        <footer class="footer pt-3 mt-4 text-muted border-top">© 2023</footer>
+        <footer class="footer pt-3 mt-4 text-muted border-top">
+            <a href="https://github.com/AusVox/langproj">Проект на ГитХабе</a>
+            © 2023
+        </footer>
     </div>
 </main>
 </body>

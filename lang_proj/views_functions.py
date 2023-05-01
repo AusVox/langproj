@@ -9,6 +9,14 @@ def get_all_courses():
     return courses
 
 
+def get_courses_by_name(name):
+    courses = []
+    for i, course in enumerate(Courses.objects.filter(name__contains=name)):
+        terms_num = len(Terms.objects.filter(course_id=course.id))
+        courses.append([i+1, str(course.id), str(course.name), terms_num])
+    return courses
+
+
 def get_terms_by_id(course_id: int):
     terms = Terms.objects.filter(course_id=course_id)
     terms_list = []

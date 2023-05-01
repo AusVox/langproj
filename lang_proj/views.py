@@ -11,6 +11,11 @@ def index(request):
     return render(request, "index.html")
 
 
+def search(request):
+    courses = get_courses_by_name(request.POST.get("search"))
+    return render(request, "search.html", context={"courses": courses})
+
+
 def show_all_courses(request):
     courses = get_all_courses()
     return render(request, "all_courses.html", context={"courses": courses})

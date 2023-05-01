@@ -26,5 +26,6 @@ urlpatterns = [
     path('create-course', views.create_course),
     path('quiz', views.start_quiz),
     path('check-quiz', views.check_quiz),
+    path('search', views.search),
     path('stats', views.show_stats)
 ]
