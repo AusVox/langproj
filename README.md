@@ -6,7 +6,7 @@
 1. Скачать этот репозиторий или клонировать его
 2. Перейти в папку репозитория при помощи `cd`
 3. `pip3 install -r requirements.txt`
-4. `python3 manage.py runserver`
+4. `python manage.py runserver`
 
 ## Корректное хранение секретов и токенов
 
@@ -26,5 +26,6 @@ from dotenv import load_dotenv
 dotenv_path = os.path.join(BASE_DIR, ".env")
 load_dotenv() 
 
+DEBUG = bool(os.getenv("DEBUG"))
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
 ```

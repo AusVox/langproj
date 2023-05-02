@@ -17,6 +17,14 @@ def get_courses_by_name(name):
     return courses
 
 
+def get_all_terms():
+    terms = Terms.objects.all()
+    terms_list = []
+    for i, t in enumerate(terms):
+        terms_list.append([i + 1, t.word, t.translation])
+    return terms_list
+
+
 def get_terms_by_id(course_id: int):
     terms = Terms.objects.filter(course_id=course_id)
     terms_list = []
@@ -31,6 +39,6 @@ def write_course(name, description, terms: str):
     terms = terms.splitlines()
     for t in terms:
         word = t.split('-')[0].strip()
-        translation = t.split()[1].strip()
+        translation = t.split('-')[1].strip()
         term = Terms(course_id=course.id, word=word, translation=translation)
         term.save()
